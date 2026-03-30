@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students List</title>
+</head>
+<body>
+    <h2>Список студентів</h2>
+    <a href="/students/add">Додати студента</a>
+    <table border="1" style="width:auto; text-align: left;">
+    <br><br>
+        <tr>
+            <th>Ім'я</th>
+            <th>Вік</th>
+            <th>Email</th>
+            <th>Дії</th> </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.email}"></td>
+            <td>
+                <a th:href="@{/students/edit/{id}(id=${student.id})}">Редагувати</a> | 
+                <a th:href="@{/students/delete/{id}(id=${student.id})}" onclick="return confirm('Ви впевнені, що хочете видалити цього студента?');">Видалити</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

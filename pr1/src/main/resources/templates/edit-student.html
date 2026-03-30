@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+    <h2>Редагувати дані студента</h2>
+    
+    <form th:action="@{/students/edit/{id}(id=${student.id})}" th:object="${student}" method="post">
+        Ім'я: <input type="text" th:field="*{name}" required /><br><br>
+        Вік: <input type="number" th:field="*{age}" required /><br><br>
+        Email: <input type="email" th:field="*{email}" required /><br><br>
+        <button type="submit">Зберегти зміни</button>
+    </form>
+    
+    <br>
+    <a href="/students">Назад до списку</a>
+</body>
+</html>
